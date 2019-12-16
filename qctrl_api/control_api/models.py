@@ -12,7 +12,10 @@ class Control(models.Model):
     )
 
     name = models.CharField(max_length=200)
-    type = models.CharField(max_length=200, choices=TYPE_CHOICES, default='Primitive' )
+    type = models.CharField(max_length=200, choices=TYPE_CHOICES, default='Primitive')
     maximum_rabi_rate = models.FloatField()
     polar_angle = models.FloatField()
+
+    def __str__(self):
+        return self.name
 
