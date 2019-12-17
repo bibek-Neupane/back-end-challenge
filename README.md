@@ -1,7 +1,7 @@
 # Q-CTRL Back-end Engineering Challenge
 ---
 
-##Scope
+## Scope
 ---
 The Technical Challenge required to implement a Restful API using Django and PostgreSQL database.
 
@@ -61,7 +61,7 @@ DATABASES = {
     python manage.py test
 ```
 ## run application server
----
+
 ```
     python manage.py runserver
 ```
