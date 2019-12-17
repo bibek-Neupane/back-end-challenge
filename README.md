@@ -1,66 +1,90 @@
 # Q-CTRL Back-end Engineering Challenge
+---
 
-The Q-CTRL Back-end Engineering Challenge is a way for applicants to roles within the Q-CTRL Back-end Engineering team to demonstrate their skills and overall approach to back-end application development.
-
-The requirements are intentionally sparse (the devil is in the detail). We don't want you to do a lot, but what you do should be your best work and should clearly demonstrate you embody the [Three Virtues](http://threevirtues.com/).
+#Scope
+---
+The Technical Challenge required to implement a Restful API using Django and PostgreSQL database.
 
 ## Table of Contents
-
-- [The Rules](#the-rules)
-- [The Challenge](#the-challenge)
+---
+- [Software and Packages](#Software and Packages)
+- [Environment Setup](#Environment Setup)
+- [API Documentation](#API Documentation)
 - [Contributing](#contributing)
 - [Credits](#credits)
 - [License](#license)
 
-## The Rules
+## Software and Packages
+---
+- Python 3.8
+- Django 3.0
+- djangorestframework 3.11.0
+- psycopg2 2.8.4
+- pylint-django 2.0.13
 
-- Read and understand [The Challenge](#the-challenge)
-- Create a solution that satisfies the [Requirements](#requirements)
-- Send the link to the repository containing your solution to careers@q-ctrl.com
+## Environment Setup
+---
+1. To get Started we first setup a virtual env for our django project. Run the following in your terminal:
+```
+         pip install pipenv
+```
+```
+         pipenv shell
+```
+    Any packages installed will be localized in this virtual environment.
 
-## The Challenge
+2. Install the required Software and packages.
 
-### Background
+#Database Setup
+---
+Initially backed by sqllite, we have to change the database configurations to postgreSQL as required by this project. 
+We can change the database settings from ./settings.py. 
+ qctrl_api-->./settings.py
+```        
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'db_name',
+        'USER': 'postgres',
+        'PASSWORD': '********',
+        'HOST': 'localhost',
+        'PORT': '5432',
+    }
+}
+```
 
-There's a new set of product features being planned for [BLACK OPAL](https://q-ctrl.com/products/black-opal/) whereby a customer will be able to create and manage quantum controls. You can think of these controls as being the individual inputs a customer may employ to manipulate their quantum system using the [Q-CTRL App](https://app.q-ctrl.com/).
+# run test
+---
+```
+    python manage.py test
+```
+#run application server
+---
+```
+    python manage.py runserver
+```
 
-### Requirements
-
-Create a RESTful API using [Django](https://www.djangoproject.com/). The API should be backed by a [PostgreSQL](https://www.postgresql.org/) database, conform to the [JSON:API](https://jsonapi.org/) specification and should implement endpoints that provide the following functionality:
-
-1. Create a new control
-1. List all controls (five per page)
-1. Get a specific control
-1. Update a specific control
-1. Delete a specific control
-1. Bulk upload controls in CSV format
-1. Download controls in CSV format
-
-### Additional Information
-
-Below are the attributes of a control. All attributes are required.
-
-| Name              | Description                                                                                                                     |
-|-------------------|---------------------------------------------------------------------------------------------------------------------------------|
-| Name              | The name of the control (e.g. "Single-Qubit Driven").                                                                           |
-| Type              | Valid control types are Primitive, CORPSE, Gaussian, CinBB and CinSK.                                                           |
-| Maximum Rabi Rate | The maximum achievable angular frequency of the Rabi cycle for a driven quantum transition. This is a number between 0 and 100. |
-| Polar Angle       | An angle measured from the z-axis on the Bloch sphere. This is a number between 0 and 1 (units of pi).                          |
-
-The below assets have been provided to help complete the challenge.
-
-| Name                                | Description     |
-|-------------------------------------|-----------------|
-| [controls.csv](assets/controls.csv) | Sample CSV file |
+## API Documentation
+---
+|Description|HTTP Method|Endpoint|Status|Test|
+-----|--------|---------|---------|-------|-----|
+Create a control|POST|/control/|success|tested
+List all Controls|GET|/control/|success|tested
+Search|GET|/control/?q=query/|success|NA
+Get specific control|GET|/control/id|success|tested
+Update specific control|UPDATE|/control/id/|success|tested
+Delete specific control|DELETE|/control/id/|success|tested
+Upload bulk CSV|PUT|/control/file/|NA|NA
+Download all as CSV|/control/file/|NA|NA
 
 ## Contributing
-
+---
 See [Contributing](https://github.com/qctrl/.github/blob/master/CONTRIBUTING.md).
 
 ## Credits
-
+---
 See [Contributors](https://github.com/qctrl/back-end-challenge/graphs/contributors).
 
 ## License
-
+---
 See [LICENSE](LICENSE).
