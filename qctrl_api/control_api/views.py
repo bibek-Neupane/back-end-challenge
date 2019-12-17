@@ -6,7 +6,7 @@ from django.db.models import Q
 
 
 class ControlCreateView(mixins.CreateModelMixin, generics.ListAPIView): #Create, Search and List view w/ mixins to combine the functionalities
-    #queryset = Control.objects.all()
+    queryset = Control.objects.all()
     serializer_class =  ControlSerializer
 
     def get_queryset(self):

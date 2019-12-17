@@ -7,7 +7,7 @@ class ControlSerializer(serializers.ModelSerializer):
     class Meta:
         model = Control
         fields = [
-            'id',
+            'pk',
             'name',
             'type',
             'maximum_rabi_rate', 
