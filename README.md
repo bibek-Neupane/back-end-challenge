@@ -7,9 +7,9 @@ The Technical Challenge required to implement a Restful API using Django and Pos
 
 ## Table of Contents
 
-- [Software and Packages](#Software and Packages)
-- [Environment Setup](#Environment Setup)
-- [API Documentation](#API Documentation)
+- Software and Packages
+- Environment Setup
+- API Documentation
 - [Contributing](#contributing)
 - [Credits](#credits)
 - [License](#license)
