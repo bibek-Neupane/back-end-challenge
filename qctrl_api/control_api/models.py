@@ -10,7 +10,7 @@ class Control(models.Model):
         ('Gaussian','Gaussian'),
         ('CinBB','CinBB'),
     )
-
+    #pk i.e id --> Refered to as pk while we use it as a lookup variable
     name = models.CharField(max_length=200)
     type = models.CharField(max_length=200, choices=TYPE_CHOICES, default='Primitive')
     maximum_rabi_rate = models.FloatField()
