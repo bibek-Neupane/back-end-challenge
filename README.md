@@ -42,7 +42,7 @@ Run the following in your terminal:
 
 2. Install the required Software and packages.
 
-##Database Setup
+## Database Setup
 
 Initially backed by sqllite, we have to change the database configurations to postgreSQL as required by this project. 
 We can change the database settings from ./settings.py. 
