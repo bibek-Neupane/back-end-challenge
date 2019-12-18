@@ -10,6 +10,7 @@ The Technical Challenge required to implement a Restful API using Django and Pos
 - [Software and Packages](#software_and_packages)
 - [Environment Setup](#env)
 - [API Documentation](#api)
+- [Custom Manage Scripts](#manage)
 - [Contributing](#contributing)
 - [Credits](#credits)
 - [License](#license)
@@ -85,6 +86,7 @@ Delete specific control|DELETE|/control/id/|success|tested
 Upload bulk CSV|PUT|/control/file/|NA|NA
 Download all as CSV|GET|/control/file/|NA|NA
 
+<a name="manage"></a>
 
 ## Management Script to upload to a database with csv
 
