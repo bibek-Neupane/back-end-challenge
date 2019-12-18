@@ -7,12 +7,14 @@ The Technical Challenge required to implement a Restful API using Django and Pos
 
 ## Table of Contents
 
-- Software and Packages
-- Environment Setup
-- API Documentation
+- [Software and Packages](#software_and_packages)
+- [Environment Setup](#env)
+- [API Documentation](#api)
 - [Contributing](#contributing)
 - [Credits](#credits)
 - [License](#license)
+
+<a name="software_and_packages"></a>
 
 ## Software and Packages
 
@@ -21,6 +23,8 @@ The Technical Challenge required to implement a Restful API using Django and Pos
 - djangorestframework 3.11.0
 - psycopg2 2.8.4
 - pylint-django 2.0.13
+
+<a name="env"></a>
 
 ## Environment Setup
 
@@ -66,6 +70,8 @@ DATABASES = {
     python manage.py runserver
 ```
 
+<a name="software_and_packages"></a>
+
 ## API Documentation
 
 Description|HTTP Method|Endpoint|Status|Test
@@ -78,6 +84,33 @@ Update specific control|UPDATE|/control/id/|success|tested
 Delete specific control|DELETE|/control/id/|success|tested
 Upload bulk CSV|PUT|/control/file/|NA|NA
 Download all as CSV|GET|/control/file/|NA|NA
+
+
+## Management Script to upload to a database with csv
+
+A manage command script was written to upload bulk csv into the postgres database.
+
+```
+from csv import DictReader
+from django.core.management import BaseCommand
+from control_api.models import Control
+
+class Command(BaseCommand):
+    def handle(self, *args, **options):
+        if Control.objects.exists():
+            print('control data already loaded')
+            return
+        print("Uploading Control Data...")
+        for row in DictReader(open('../assets/controls.csv')):
+            control = Control()
+            control.name = row['name']
+            control.type = row['type']
+            control.maximum_rabi_rate = row['maximum_rabi_rate']
+            control.polar_angle = row['polar_angle']
+            control.save()
+
+```
+
 
 ## Contributing
 
